@@ -1,10 +1,11 @@
 #include <iostream>
 using namespace std;
-#include <cmath>
+#include <cmath> // these are meant to allow certain math calculation to happen
 void input (double& AtempF, double& WspdMPH, double& Dpoint);
 void windchill (double& AtempF, double& WspdMPH, double& Wchill);
 void cloudbase (double& Atempf, double& Dpoint, double& clodbase);
 void output (double& Atempf, double& Dpoint, double& clodbase);
+// these void statement allows us to use them as another int main without affect the actual int mains
 
 int main()
 {
@@ -13,48 +14,45 @@ double AtempF;
 double WspdMPH;
 double clodbase;
 double Dpoint;
+// these are the list of values that will be used in the calculations.
 
 cout << "====================\n";
 cout << " weather calculator\n";
 cout << "====================\n";
+/ title statement to tell the user what the program is
 
-cout << "Input the air tempreture (F): ";
+cout << "Input the air tempreture (F): "; // the input for the air tempreture.
 while (!(cin >> AtempF)) { 
-		cout << "Invalid input. Try again: ";
+		cout << "Invalid input. Try again: "; // these are the error statements to prevent the code from messing up
 		cin.clear();
 		cin.ignore(10000, '\n');
 }
 
-cout << "Input the wind speed (MPH): ";
+cout << "Input the wind speed (MPH): "; // input for wind speed
 while (!(cin >> WspdMPH)) {
-	cout << "Invalid input. Try again: ";
+	cout << "Invalid input. Try again: "; // the invalid statement if a input that cant be read is inputted
 	cin.clear();
 	cin.ignore(10000, '\n');;
 }
 
-cout << "Input the dew point: ";
+cout << "Input the dew point: "; // the input for the dew point
 while (!(cin >> Dpoint)) {
-    cout << "Invalid input, please try again: ";
+    cout << "Invalid input, please try again: "; // the invalid statement if a input that cant be read is inputted
     cin.clear();
     cin.ignore(10000, '\n');
 }
 
-windchill(AtempF, WspdMPH, Wchill);
+windchill(AtempF, WspdMPH, Wchill); // the input for the dew point
 cloudbase (AtempF, Dpoint, clodbase);
-cout << "The windchill is: " << Wchill << " degrees fahrenheit";
+cout << "The windchill is: " << Wchill << " degrees fahrenheit"; // the invalid statement if a input that cant be read is inputted
 cout << "\nThe cloud base is: " << clodbase << " feet";
 }
 
 
 void windchill(double& AtempF, double& WspdMPH, double& Wchill) {
 Wchill = 35.74 + 0.6215 * AtempF - 35.75*pow(WspdMPH, .16) + .4275 * AtempF*pow(WspdMPH, .16); }
+// this is the function that figures out the wind chill.
 
 void cloudbase (double& Atempf, double& Dpoint, double& clodbase) {
 clodbase = 1000 * (Atempf - Dpoint)/4.4; }
-
-
-void windchill(double& AtempF, double& WspdMPH, double& Wchill) {
-Wchill = 35.74 + 0.6215 * AtempF - 35.75*pow(WspdMPH, .16) + .4275 * AtempF*pow(WspdMPH, .16); }
-
-void cloudbase (double& Atempf, double& Dpoint, double& clodbase) {
-clodbase = 1000 * (Atempf - Dpoint)/4.4; }
+// the function that calculated the dew point
