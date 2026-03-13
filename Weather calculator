@@ -19,26 +19,20 @@ cout << " weather calculator\n";
 cout << "====================\n";
 
 cout << "Input the air tempreture (F): ";
-cin >> AtempF;
-
-while (!(cin >> AtempF)) {
-    cout << "Invalid input, please try again: ";
-    cin.clear();
-    cin.ignore(10000, '\n');
+while (!(cin >> AtempF)) { 
+		cout << "Invalid input. Try again: ";
+		cin.clear();
+		cin.ignore(10000, '\n');
 }
 
 cout << "Input the wind speed (MPH): ";
-cin >> WspdMPH;
-
 while (!(cin >> WspdMPH)) {
-    cout << "Invalid input, please try again: ";
-    cin.clear();
-    cin.ignore(10000, '\n');
+	cout << "Invalid input. Try again: ";
+	cin.clear();
+	cin.ignore(10000, '\n');;
 }
 
 cout << "Input the dew point: ";
-cin >> Dpoint;
-
 while (!(cin >> Dpoint)) {
     cout << "Invalid input, please try again: ";
     cin.clear();
@@ -50,6 +44,13 @@ cloudbase (AtempF, Dpoint, clodbase);
 cout << "The windchill is: " << Wchill << "degrees fahrenheit";
 cout << "\nThe cloud base is: " << clodbase << " feet";
 }
+
+
+void windchill(double& AtempF, double& WspdMPH, double& Wchill) {
+Wchill = 35.74 + 0.6215 * AtempF - 35.75*pow(WspdMPH, .16) + .4275 * AtempF*pow(WspdMPH, .16); }
+
+void cloudbase (double& Atempf, double& Dpoint, double& clodbase) {
+clodbase = 1000 * (Atempf - Dpoint)/4.4; }
 
 
 void windchill(double& AtempF, double& WspdMPH, double& Wchill) {
