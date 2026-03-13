@@ -41,7 +41,7 @@ while (!(cin >> Dpoint)) {
 
 windchill(AtempF, WspdMPH, Wchill);
 cloudbase (AtempF, Dpoint, clodbase);
-cout << "The windchill is: " << Wchill << "degrees fahrenheit";
+cout << "The windchill is: " << Wchill << " degrees fahrenheit";
 cout << "\nThe cloud base is: " << clodbase << " feet";
 }
 
