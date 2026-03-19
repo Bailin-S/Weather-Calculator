@@ -2,9 +2,12 @@
 using namespace std;
 #include <cmath> // these are meant to allows us to power statements
 void input (double& aTempf, double& wspdMPH, double& dPoint); // this funtions runs the user puts the variables
+
 double windchill (double& aTempf, double& wspdMPH, double& wChill); // this function runs the windchill calculation
+
 double cloudbase (double& aTempf, double& dPoint, double& clodBase); // this function run the cloud base calculation
-void output (double& aTempf, double& dPoint, double& wChill, double& clodBase); 
+
+void output (double& aTempf, double& dPoint, double& wChill, double& clodBase);
 // this function output the two caluclation of the previous function and explains them to the user
 
 int main()
@@ -12,17 +15,17 @@ int main()
 	cout << "====================\n";
 	cout << " weather calculator\n";
 	cout << "====================\n";
-double aTempf; // this is the variable for the air tempreture measured in fahrenheit
-double dPoint; // this is the variable for the dew point
-double clodBase; // this is the variable for cloud base
-double wspdMPH; // this is the variable for the wind speed
-double wChill; // this is the variable for the wind chill
-	
-// title statement to tell the user what the program is
-	input(aTempf, wspdMPH, dPoint);
-	windchill(aTempf, wspdMPH, wChill);
-	cloudbase(aTempf, dPoint, clodBase);
-	output(aTempf, dPoint, clodBase, wChill);
+	// title statement to tell the user what the program is
+	double aTempf; // this is the variable for the air tempreture measured in fahrenheit
+	double dPoint; // this is the variable for the dew point
+	double clodBase; // this is the variable for cloud base
+	double wspdMPH; // this is the variable for the wind speed
+	double wChill; // this is the variable for the wind chill
+
+	input(aTempf, wspdMPH, dPoint); // this function ask the user to input air temp, dew point, and wind speed
+	windchill(aTempf, wspdMPH, wChill); // this function runs the wind chill calculation with the number inputted from input
+	cloudbase(aTempf, dPoint, clodBase); // this function runs the cloud base calculation with the number inputted from input
+	output(aTempf, dPoint, clodBase, wChill); // this out puts the number from wind chill and cloud base with explanations
 }
 
 
@@ -52,13 +55,17 @@ void input (double& aTempf, double& wspdMPH, double& dPoint) {
 
 double windchill (double& aTempf, double& wspdMPH, double& wChill) { // connects the wind chill to the void
 	wChill = 35.74 + 0.6215 * aTempf - 35.75*pow(wspdMPH, .16) + .4275 * aTempf*pow(wspdMPH, .16);
-	return wChill;
+	return wChill; // this is the calculation for wind chill which is then sent to output
 }
 
-// this is the calculation for wind chill which is then sent to cout
 double cloudbase (double& aTempf, double& dPoint, double& clodBase) { // this connects to the void cloudbase
 	clodBase = 1000 * (aTempf - dPoint)/4.4;
-	return clodBase;
+	return clodBase; // this is the calculation to find the cloud base which is then set to output
+}
+
+void output (double& aTempf, double& dPoint, double& wChill, double& clodBase) {
+	cout << "The windchill is: " << clodBase << " degrees fahrenheit"; // this displays the value for windchill
+	cout << "\nThe cloud base is: " << wChill << " feet"; // this is the output to tell the user what the cloud base is
 }
 
 void output (double& aTempf, double& dPoint, double& wChill, double& clodBase) {
