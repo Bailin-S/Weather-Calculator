@@ -67,8 +67,3 @@ void output (double& aTempf, double& dPoint, double& wChill, double& clodBase) {
 	cout << "The windchill is: " << clodBase << " degrees fahrenheit"; // this displays the value for windchill
 	cout << "\nThe cloud base is: " << wChill << " feet"; // this is the output to tell the user what the cloud base is
 }
-
-void output (double& aTempf, double& dPoint, double& wChill, double& clodBase) {
-	cout << "The windchill is: " << clodBase << " degrees fahrenheit"; // this displays the value for windchill
-	cout << "\nThe cloud base is: " << wChill << " feet"; // this is the output to tell the user what the cloud base is
-}
